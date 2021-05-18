@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BillingListComponent } from './billing-list/billing-list.component';
+import { CreateBillingComponent } from './create-billing/create-billing.component';
 
 const routes: Routes = [];
 

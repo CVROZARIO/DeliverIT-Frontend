@@ -1,0 +1,32 @@
+<h2 class="mb-3">Contas Cadastradas</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Valor<br/>Original</th>
+            <th>Valor<br/>Final</th>
+            <th>Data de<br/>Vencimento</th>
+            <th>Data de<br/>Pagamento</th>
+            <th>Dias de<br/>Atraso</th>
+            <th>Multa</th>
+            <th>Juros<br/>por Dia</th>
+            <th>Data de<br/>Cadastro</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let billing of billings">
+            <td>{{billing.id}}</td>
+            <td>{{billing.name}}</td>
+            <td>{{billing.priceOriginal | currency }}</td>
+            <td>{{billing.priceFinal | currency }}</td>
+            <td>{{billing.dueDate | date:'shortDate' }}</td>
+            <td>{{billing.paymentDate | date:'shortDate' }}</td>
+            <td>{{billing.delayedDays}}</td>
+            <td *ngIf="billing.delayedDays != 0; else tmpNone">{{billing.finePercentageOfExpiration}}%</td>
+            <td *ngIf="billing.delayedDays != 0; else tmpNone">{{billing.fineDailyPercentage}}%</td>
+            <td>{{billing.createdTime | date:'medium' }}</td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #tmpNone><td>&nbsp;</td></ng-template>

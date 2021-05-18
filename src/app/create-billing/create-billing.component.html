@@ -1,0 +1,28 @@
+<h2 class="mb-3">Cadastrar Conta</h2>
+<form  class="p-4 p-md-3 border rounded-3 bg-light" (ngSubmit)="onSubmit()" #createForm="ngForm">
+    <div class="form-floating mb-3">
+        <input type="text" id="name" name="name" class="form-control" maxlength="100" [(ngModel)]="billing.name" required #name="ngModel" autofocus/>
+        <label for="name">Nome:</label>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Este campo é obrigatório</div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" id="priceOriginal" name="priceOriginal" class="form-control" [(ngModel)]="billing.priceOriginal" required #priceOriginal="ngModel"
+        currencyMask />
+        <label for="priceOriginal">Valor:</label>
+        <div [hidden]="priceOriginal.valid || priceOriginal.pristine" class="alert alert-danger">Este campo é obrigatório</div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="date" id="dueDate" name="dueDate" class="form-control" [(ngModel)]="billing.dueDate" required #dueDate="ngModel" />
+        <label for="dueDate">Data de Vencimento:</label>
+        <div [hidden]="dueDate.valid || dueDate.pristine" class="alert alert-danger">Este campo é obrigatório</div>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="date" id="paymentDate" name="paymentDate" class="form-control" [(ngModel)]="billing.paymentDate" required #paymentDate="ngModel" />
+        <label for="paymentDate">Data de Pagamento:</label>
+        <div [hidden]="paymentDate.valid || paymentDate.pristine" class="alert alert-danger">Este campo é obrigatório</div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="reset" class="btn btn-danger">Limpar</button>
+        <button type="submit" class="btn btn-success" [disabled]="!createForm.form.valid">Cadastrar</button>
+      </div>
+</form>
